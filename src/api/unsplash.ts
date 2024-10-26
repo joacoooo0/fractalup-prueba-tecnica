@@ -1,12 +1,12 @@
-const UNSPLASH_API_URL = "https://api.unsplash.com/search/photos";
-const UNSPLASH_ACCESS_KEY = "WiOEX_WtAZuTjJcFSj_49F2Datmj3Rgwx9gciFnrsIA";
+const apiurl = import.meta.env.UNSPLASH_API_URL;
+const accesskey = import.meta.env.UNSPLASH_ACCESS_KEY;
 
 export async function getCountryImage(
   countryName: string
 ): Promise<string | null> {
   try {
     const response = await fetch(
-      `${"https://api.unsplash.com/search/photos"}?query=${countryName}&client_id=${"WiOEX_WtAZuTjJcFSj_49F2Datmj3Rgwx9gciFnrsIA"}&per_page=1`
+      `${apiurl}?query=${countryName}&client_id=${accesskey}&per_page=1`
     );
     const data = await response.json();
     const imageUrl = data.results[0]?.urls?.regular;

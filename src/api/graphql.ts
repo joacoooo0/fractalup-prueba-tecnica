@@ -1,7 +1,8 @@
 import { GraphQLClient } from "graphql-request";
 import type { Country } from "../api/types.ts";
 
-const api = "https://countries.trevorblades.com/";
+// Accede a la variable de entorno
+const api = import.meta.env.VITE_API_COUNTRIES;
 
 const graphQLClient = new GraphQLClient(api);
 
