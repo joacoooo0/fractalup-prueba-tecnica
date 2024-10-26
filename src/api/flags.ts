@@ -1,12 +1,10 @@
-const REST_COUNTRIES_API = "https://restcountries.com/v3.1/name/";
+const REST_COUNTRIES_API = import.meta.env.URL_REST_COUNTRY;
 
 export async function getCountryFlag(
   countryName: string
 ): Promise<string | null> {
   try {
-    const response = await fetch(
-      `${"https://restcountries.com/v3.1/name/"}${countryName}`
-    );
+    const response = await fetch(`${REST_COUNTRIES_API}${countryName}`);
     if (!response.ok) {
       throw new Error("Error al obtener la bandera del país");
     }

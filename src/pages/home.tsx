@@ -5,6 +5,7 @@ import { getCountries } from "../api/graphql.ts";
 import type { Country } from "../api/types.ts";
 import { getCountryImage } from "../api/unsplash.ts";
 import { getCountryFlag } from "../api/flags.ts";
+import { useState } from "react";
 
 //API GraphQL
 const countries: Country[] = await getCountries();

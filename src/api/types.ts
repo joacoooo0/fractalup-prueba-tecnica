@@ -1,11 +1,12 @@
-export interface Country {
+export type Country = {
   name: string;
-  currency: string;
   capital: string;
-  language: {
+  currency: string;
+  languages: {
     name: string;
-  };
+  }[];
   continent: {
     name: string;
   };
-}
+  flagUrl?: string;
+};
