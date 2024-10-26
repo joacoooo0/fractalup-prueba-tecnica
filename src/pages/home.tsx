@@ -8,8 +8,7 @@ import { getCountryFlag } from "../api/flags.ts";
 import { useState } from "react";
 
 //API GraphQL
-const countries: Country[] = await getCountries();
-// estoes para obtener las imagenes de cada pais, juntamente con su flag
+const countries = await getCountries();
 const countriesWithImages = await Promise.all(
   countries.map(async (country) => {
     const imageUrl =
