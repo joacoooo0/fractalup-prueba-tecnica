@@ -5,7 +5,6 @@ import { getCountries } from "../api/graphql.ts";
 import type { Country } from "../api/types.ts";
 import { getCountryImage } from "../api/unsplash.ts";
 import { getCountryFlag } from "../api/flags.ts";
-import React, { useState } from "react";
 
 //API GraphQL
 const countries: Country[] = await getCountries();
@@ -21,20 +20,9 @@ const countriesWithImages = await Promise.all(
 );
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
-  const [filteredCountries, setFilteredCountries] =
-    useState(countriesWithImages);
   const openModal = (country: Country) => setSelectedCountry(country);
   const closeModal = () => setSelectedCountry(null);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const filtered = countriesWithImages.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredCountries(filtered);
-  };
 
   return (
     <div>
@@ -74,7 +62,7 @@ const Home = () => {
         </aside>
 
         <div className="ml-64 w-full h-full p-5">
-          <form onSubmit={handleSearch} className="w-72 mb-10">
+          <form className="w-72 mb-10">
             <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -104,8 +92,6 @@ const Home = () => {
                 id="search"
                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Busca un país"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button
                 type="submit"

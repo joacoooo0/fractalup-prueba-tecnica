@@ -6,7 +6,7 @@ export async function getCountryImage(
 ): Promise<string | null> {
   try {
     const response = await fetch(
-      `${UNSPLASH_API_URL}?query=${countryName}&client_id=${UNSPLASH_ACCESS_KEY}&per_page=1`
+      `${"https://api.unsplash.com/search/photos"}?query=${countryName}&client_id=${"WiOEX_WtAZuTjJcFSj_49F2Datmj3Rgwx9gciFnrsIA"}&per_page=1`
     );
     const data = await response.json();
     const imageUrl = data.results[0]?.urls?.regular;

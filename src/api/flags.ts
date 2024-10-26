@@ -4,7 +4,9 @@ export async function getCountryFlag(
   countryName: string
 ): Promise<string | null> {
   try {
-    const response = await fetch(`${REST_COUNTRIES_API}${countryName}`);
+    const response = await fetch(
+      `${"https://restcountries.com/v3.1/name/"}${countryName}`
+    );
     if (!response.ok) {
       throw new Error("Error al obtener la bandera del país");
     }
